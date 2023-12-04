@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExampleController;
+use App\Http\Controllers\FormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,4 +97,20 @@ Route::prefix('blog')->group(function () {
     Route::get('medical', function () {
         return ' medical page';
     });
+});
+/*
+//session 3
+Route::get('login',function (){
+    return view('login');
 });    
+
+Route::post('logged',function (){
+    return 'you are logged in';
+})->name('logged');
+
+Route::get('control', [exampleController::class,'show']);
+*/
+// task 3
+Route::get('login', [FormController::class, 'show']);
+Route::post('logged', [FormController::class, 'store'])->name('logged');
+Route::get('data', [FormController::class, 'data'])->name('data');
